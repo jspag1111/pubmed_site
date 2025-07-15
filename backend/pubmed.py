@@ -1,8 +1,5 @@
-import os
 import requests
 from typing import List, Dict
-
-PUBMED_API_KEY = os.getenv("PUBMED_API_KEY")
 BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 
 
@@ -16,8 +13,6 @@ def search_pubmed(query: str, filters: Dict) -> List[Dict]:
         "retmode": "json",
         "retmax": 20,
     }
-    if PUBMED_API_KEY:
-        params["api_key"] = PUBMED_API_KEY
 
     if filters.get("year_start"):
         params["mindate"] = filters["year_start"]
@@ -38,8 +33,6 @@ def search_pubmed(query: str, filters: Dict) -> List[Dict]:
         "id": ",".join(id_list),
         "retmode": "json",
     }
-    if PUBMED_API_KEY:
-        summary_params["api_key"] = PUBMED_API_KEY
 
     r = requests.get(f"{BASE_URL}/esummary.fcgi", params=summary_params)
     r.raise_for_status()
@@ -66,8 +59,6 @@ def fetch_abstracts(pmids: List[str]) -> Dict[str, str]:
         "id": ",".join(pmids),
         "retmode": "text",
     }
-    if PUBMED_API_KEY:
-        params["api_key"] = PUBMED_API_KEY
 
     r = requests.get(f"{BASE_URL}/efetch.fcgi", params=params)
     r.raise_for_status()
