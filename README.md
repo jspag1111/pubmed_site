@@ -114,3 +114,7 @@ frontend/ - React client using Vite and Tailwind CSS
 ```
 
 The project is meant as a lightweight example and can be extended with additional filters, caching or a database as needed.
+
+## Troubleshooting
+
+If you start the frontend with `npm run dev` and only see a blank page, make sure the dependencies have been installed. Run `npm install` inside the `frontend` folder before launching the dev server.
