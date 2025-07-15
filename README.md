@@ -16,7 +16,7 @@ This repository contains a demo full‑stack application that queries PubMed, le
 
 - Python 3.10 or newer
 - Node.js 18 or newer with npm
-- API keys for PubMed E‑utilities and Google Gemini
+ - Google Gemini API key (PubMed API key optional)
 
 ## Setup
 
@@ -36,7 +36,7 @@ cd pubmed_site
 2. Copy the example environment file and add your API keys
    ```bash
    cp backend/.env.example backend/.env
-   # edit backend/.env and set PUBMED_API_KEY and GEMINI_API_KEY
+   # edit backend/.env and set GEMINI_API_KEY (PUBMED_API_KEY is optional)
    ```
 3. Start the FastAPI application
    ```bash
@@ -114,3 +114,7 @@ frontend/ - React client using Vite and Tailwind CSS
 ```
 
 The project is meant as a lightweight example and can be extended with additional filters, caching or a database as needed.
+
+## Troubleshooting
+
+If you start the frontend with `npm run dev` and only see a blank page, make sure the dependencies have been installed. Run `npm install` inside the `frontend` folder before launching the dev server.
